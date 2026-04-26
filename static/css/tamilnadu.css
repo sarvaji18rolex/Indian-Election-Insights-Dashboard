@@ -1,0 +1,37 @@
+.tn-bg {
+  background: radial-gradient(ellipse at 30% 30%, #1a0010 0%, #06090f 70%) !important;
+}
+.tn-hero {
+  min-height: 50vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+  background: radial-gradient(ellipse at center, rgba(230,0,38,0.15) 0%, transparent 70%);
+}
+.tn-hero-inner {}
+.tn-flag { font-size: 64px; margin-bottom: 16px; }
+.tn-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(40px,8vw,80px); color: #fff; }
+.tn-hero p { color: #E60026; font-size: 18px; margin: 8px 0 32px; font-weight: 600; }
+.tn-quick-stats { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.tn-qs {
+  background: rgba(230,0,38,0.12); border: 1px solid rgba(230,0,38,0.3);
+  border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px;
+}
+.tn-qs-val { font-size: 32px; font-weight: 700; color: #E60026; }
+.tn-qs-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.govt-card {
+  background: var(--card-bg); border: 2px solid rgba(230,0,38,0.4);
+  border-radius: var(--radius); padding: 32px; display: flex; gap: 32px;
+  align-items: center; flex-wrap: wrap;
+}
+.chart-wrap { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.pred-section { display: flex; flex-direction: column; gap: 16px; }
+.pred-tn {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; border-left: 5px solid;
+}
+.pred-tn-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.pred-tn-party { font-size: 20px; font-weight: 700; }
+.pred-tn-seats { font-size: 48px; font-weight: 900; }
+.ls29-wrap {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px;
+}

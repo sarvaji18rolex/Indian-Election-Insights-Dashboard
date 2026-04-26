@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>State Detail | India Election Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+<div class="bg-canvas"></div>
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="tribar"></span>
+    <span class="nav-logo">🗳️</span>
+    <span class="nav-title">भारत Election Intelligence</span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nl">🏛️ Dashboard</a>
+    <a href="/tamilnadu" class="nl tn">🌅 Tamil Nadu</a>
+    <a href="/predictions" class="nl">🔮 Predictions</a>
+  </div>
+  <div class="nav-right" id="live-clock">--:--:--</div>
+</nav>
+
+<div id="state-content" class="section" style="margin-top:90px">
+  <div class="loading-spinner">Loading state data…</div>
+</div>
+
+<footer class="footer">
+  <div class="tri-line"></div>
+  <p>India Election Intelligence | State Data 2024–25</p>
+</footer>
+<script>
+  const STATE_CODE = "{{ state_code }}";
+</script>
+<script src="/static/js/state.js"></script>
+</body>
+</html>

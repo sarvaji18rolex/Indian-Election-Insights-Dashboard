@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>भारत Election Intelligence Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+<div class="bg-canvas"><div class="chakra-bg"></div></div>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="tribar"></span>
+    <span class="nav-logo">🗳️</span>
+    <span class="nav-title">भारत Election Intelligence</span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nl active">🏛️ Dashboard</a>
+    <a href="/tamilnadu" class="nl tn">🌅 Tamil Nadu</a>
+    <a href="/predictions" class="nl">🔮 Predictions</a>
+  </div>
+  <div class="nav-right" id="live-clock">--:--:--</div>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-title">India Election<br><span class="grad">Intelligence Hub</span></h1>
+  <p class="hero-sub">Live Data · AI Predictions · 28 States · Lok Sabha 2024</p>
+  <div class="hero-stats" id="hero-stats">
+    <div class="hs"><div class="hs-val" id="hs-states">28</div><div class="hs-lbl">States</div></div>
+    <div class="hs nda"><div class="hs-val" id="hs-nda">—</div><div class="hs-lbl">NDA States</div></div>
+    <div class="hs india"><div class="hs-val" id="hs-india">—</div><div class="hs-lbl">INDIA Bloc</div></div>
+    <div class="hs"><div class="hs-val" id="hs-next">—</div><div class="hs-lbl">Days to Next Election</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-head"><h2>🏛️ Lok Sabha 2024 — 543 Seats</h2><span class="badge">General Election</span></div>
+  <div class="ls-wrap">
+    <div class="seat-bar-outer">
+      <div class="seat-bar-track" id="seat-bar"></div>
+      <div class="seat-bar-mid"><span>← Opposition</span><span class="mid-label">272 Majority</span><span>Ruling →</span></div>
+    </div>
+    <div class="ls-cards" id="ls-cards"></div>
+  </div>
+</section>
+
+<section class="section alliance-sec">
+  <div class="alliance-grid">
+    <div class="a-card nda-card">
+      <div class="a-logo">🪷 NDA</div>
+      <div class="a-seats" id="nda-seats">—</div>
+      <div class="a-sub">National Democratic Alliance</div>
+      <div class="a-parties" id="nda-parties"></div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="a-card india-card">
+      <div class="a-logo">✋ INDIA</div>
+      <div class="a-seats" id="india-seats">—</div>
+      <div class="a-sub">Indian Nat'l Developmental Inclusive Alliance</div>
+      <div class="a-parties" id="india-parties"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-head"><h2>👑 Current Prime Minister</h2></div>
+  <div class="pm-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Narendra_Modi_2023.jpg/220px-Narendra_Modi_2023.jpg"
+         class="pm-img" alt="PM" onerror="this.src='https://ui-avatars.com/api/?name=NM&size=120&background=FF6B00&color=fff'">
+    <div class="pm-body">
+      <div class="pm-badge">Prime Minister of India</div>
+      <h3 class="pm-name">Narendra Modi</h3>
+      <div class="pm-party"><span class="dot" style="background:#FF6B00"></span> Bharatiya Janata Party · NDA</div>
+      <div class="pm-grid">
+        <div class="pg"><span id="pm-days" class="pv">—</span><small>Days in Office</small></div>
+        <div class="pg"><span class="pv">2014</span><small>First Term</small></div>
+        <div class="pg"><span class="pv">3rd</span><small>Current Term</small></div>
+        <div class="pg"><span class="pv">2029</span><small>Term Ends</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-head">
+    <h2>🗺️ State Power Map</h2>
+    <div class="filters" id="region-filters">
+      <button class="fb active" onclick="filterRegion('All',this)">All</button>
+      <button class="fb" onclick="filterRegion('North',this)">North</button>
+      <button class="fb" onclick="filterRegion('South',this)">South</button>
+      <button class="fb" onclick="filterRegion('East',this)">East</button>
+      <button class="fb" onclick="filterRegion('West',this)">West</button>
+      <button class="fb" onclick="filterRegion('Central',this)">Central</button>
+      <button class="fb" onclick="filterRegion('Northeast',this)">Northeast</button>
+    </div>
+  </div>
+  <div class="states-grid" id="states-grid"></div>
+</section>
+
+<section class="section">
+  <div class="sec-head"><h2>📅 Upcoming Elections</h2></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section class="section">
+  <div class="sec-head"><h2>📊 Party Dominance</h2></div>
+  <div class="dominance" id="dominance"></div>
+</section>
+
+<footer class="footer">
+  <div class="tri-line"></div>
+  <p>🗳️ India Election Intelligence | Data: 2024–25 | Educational Purpose Only</p>
+  <p class="fsub">Flask · SQLite · Vanilla JS · Jai Hind 🇮🇳</p>
+</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

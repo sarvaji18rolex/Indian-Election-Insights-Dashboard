@@ -1,0 +1,368 @@
+/* ============================================================
+   INDIA ELECTION DASHBOARD — main.css
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --saffron: #FF6B00;
+  --white:   #FFFFFF;
+  --green:   #19A84B;
+  --navy:    #0A0E2A;
+  --dark:    #060918;
+  --glass:   rgba(255,255,255,0.05);
+  --glass2:  rgba(255,255,255,0.10);
+  --border:  rgba(255,255,255,0.12);
+  --nda:     #FF6B00;
+  --india:   #19A84B;
+  --text:    #E8EAF6;
+  --muted:   #8892B0;
+  --card-bg: rgba(10,14,42,0.85);
+  --gold:    #FFD700;
+  --radius:  14px;
+  --shadow:  0 8px 40px rgba(0,0,0,0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Background Canvas ─────────────────────────────────────── */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: -2; overflow: hidden;
+  background: radial-gradient(ellipse at 20% 20%, #0d1b4b 0%, #060918 60%);
+}
+.chakra-bg {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid rgba(255,183,3,0.08);
+  box-shadow: 0 0 200px rgba(255,183,3,0.04);
+  animation: spin 120s linear infinite;
+}
+.chakra-bg::before {
+  content:'';
+  position:absolute; inset:-2px;
+  border-radius:50%;
+  border: 1px solid rgba(255,107,0,0.06);
+  animation: spin 80s linear infinite reverse;
+}
+@keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+/* ── Navbar ────────────────────────────────────────────────── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; gap: 24px;
+  padding: 0 32px;
+  height: 64px;
+  background: rgba(6,9,24,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.tribar {
+  display: block; width: 4px; height: 28px; border-radius: 2px;
+  background: linear-gradient(to bottom, var(--saffron) 33%, var(--white) 33% 66%, var(--green) 66%);
+}
+.nav-logo { font-size: 22px; }
+.nav-title { font-family: 'Cinzel', serif; font-size: 15px; color: var(--gold); letter-spacing: 1px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-links { display: flex; gap: 6px; margin-left: auto; }
+.nl {
+  padding: 6px 16px; border-radius: 8px; text-decoration: none;
+  color: var(--muted); font-weight: 600; font-size: 14px;
+  transition: all .2s; border: 1px solid transparent;
+}
+.nl:hover, .nl.active { color: var(--text); background: var(--glass2); border-color: var(--border); }
+.nl.tn { color: #E60026; }
+.nl.tn.active { background: rgba(230,0,38,0.15); border-color: rgba(230,0,38,0.3); }
+.nav-right { font-family: monospace; font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero {
+  min-height: 60vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+}
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 7vw, 88px);
+  font-weight: 900; line-height: 1.1;
+  color: var(--white);
+  text-shadow: 0 4px 30px rgba(255,183,3,0.3);
+}
+.grad {
+  background: linear-gradient(135deg, var(--saffron), var(--gold), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub { color: var(--muted); font-size: 18px; margin: 16px 0 40px; }
+.hero-stats { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hs {
+  background: var(--glass); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 28px; text-align: center;
+  backdrop-filter: blur(10px); min-width: 130px;
+}
+.hs.nda { border-color: rgba(255,107,0,.3); }
+.hs.india { border-color: rgba(25,168,75,.3); }
+.hs-val { font-size: 38px; font-weight: 700; color: var(--gold); }
+.hs.nda .hs-val { color: var(--nda); }
+.hs.india .hs-val { color: var(--india); }
+.hs-lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* ── Section ──────────────────────────────────────────────── */
+.section { max-width: 1300px; margin: 0 auto 60px; padding: 0 24px; }
+.sec-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+}
+.sec-head h2 { font-family: 'Cinzel', serif; font-size: 22px; color: var(--gold); }
+.badge {
+  background: linear-gradient(135deg,var(--saffron),#f59e0b);
+  color:#000; padding:4px 14px; border-radius:20px; font-size:12px; font-weight:700;
+}
+.filters { display:flex; gap:8px; flex-wrap:wrap; }
+.fb {
+  padding:5px 14px; border-radius:20px; border:1px solid var(--border);
+  background:transparent; color:var(--muted); cursor:pointer; font-family:'Rajdhani',sans-serif;
+  font-size:13px; font-weight:600; transition:all .2s;
+}
+.fb:hover,.fb.active { background:var(--glass2); color:var(--text); border-color:var(--gold); }
+
+/* ── Lok Sabha Bar ────────────────────────────────────────── */
+.ls-wrap { display:flex; flex-direction:column; gap:24px; }
+.seat-bar-outer { background:var(--glass); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.seat-bar-track { display:flex; height:56px; }
+.seat-bar-track > div { display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#fff; transition:width .8s ease; min-width:40px; }
+.seat-bar-mid { display:flex; justify-content:space-between; padding:8px 16px;
+  font-size:12px; color:var(--muted); }
+.mid-label { color:var(--gold); font-weight:700; }
+.ls-cards { display:flex; flex-wrap:wrap; gap:12px; }
+.ls-card {
+  background:var(--glass); border:1px solid var(--border); border-radius:12px;
+  padding:16px 20px; display:flex; align-items:center; gap:14px; flex:1; min-width:220px;
+}
+.ls-logo { width:42px; height:42px; object-fit:contain; border-radius:8px; background:#fff; padding:4px; }
+.ls-logo-fallback { width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px; }
+.ls-info .ls-name { font-size:15px; font-weight:700; }
+.ls-info .ls-abbr { font-size:12px; color:var(--muted); }
+.ls-seats { font-size:32px; font-weight:900; margin-left:auto; }
+.ls-vote { font-size:12px; color:var(--muted); text-align:right; }
+
+/* ── Alliance ─────────────────────────────────────────────── */
+.alliance-sec { margin-bottom:60px; }
+.alliance-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; }
+.a-card {
+  padding:32px; border-radius:var(--radius); border:2px solid var(--border);
+  background:var(--card-bg); text-align:center; backdrop-filter:blur(10px);
+}
+.nda-card { border-color:rgba(255,107,0,.4); background:rgba(255,107,0,.05); }
+.india-card { border-color:rgba(25,168,75,.4); background:rgba(25,168,75,.05); }
+.a-logo { font-family:'Cinzel',serif; font-size:22px; color:var(--gold); margin-bottom:8px; }
+.a-seats { font-size:64px; font-weight:900; }
+.nda-card .a-seats { color:var(--nda); }
+.india-card .a-seats { color:var(--india); }
+.a-sub { font-size:12px; color:var(--muted); margin:4px 0 16px; }
+.a-parties { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.ap-chip {
+  padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;
+  color:#fff; border:1px solid rgba(255,255,255,.2);
+}
+.vs {
+  font-family:'Cinzel',serif; font-size:28px; font-weight:900;
+  color:var(--gold); text-align:center;
+}
+
+/* ── PM Card ──────────────────────────────────────────────── */
+.pm-card {
+  display:flex; gap:32px; align-items:center;
+  background:var(--card-bg); border:1px solid rgba(255,183,3,.3);
+  border-radius:var(--radius); padding:32px; max-width:700px; margin:0 auto;
+  box-shadow: 0 0 60px rgba(255,183,3,0.08);
+}
+.pm-img { width:120px; height:150px; object-fit:cover; border-radius:12px;
+  border:3px solid var(--gold); }
+.pm-badge { font-size:11px; color:var(--gold); font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; margin-bottom:8px; }
+.pm-name { font-family:'Cinzel',serif; font-size:28px; margin-bottom:8px; }
+.pm-party { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:14px; margin-bottom:20px; }
+.dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+.pm-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.pg { text-align:center; }
+.pv { font-size:24px; font-weight:700; color:var(--gold); display:block; }
+.pg small { font-size:11px; color:var(--muted); }
+
+/* ── States Grid ──────────────────────────────────────────── */
+.states-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+}
+.state-card {
+  background:var(--card-bg); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px; cursor:pointer;
+  transition:all .25s; position:relative; overflow:hidden;
+  text-decoration:none; color:inherit; display:block;
+}
+.state-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+}
+.state-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-color:rgba(255,255,255,.25); }
+.sc-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.sc-logo { width:40px; height:40px; object-fit:contain; border-radius:8px; background:#fff; padding:3px; }
+.sc-logo-fb { width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px; }
+.sc-name { font-family:'Cinzel',serif; font-size:15px; font-weight:700; }
+.sc-code { font-size:11px; color:var(--muted); }
+.sc-badge {
+  margin-left:auto; padding:3px 10px; border-radius:20px;
+  font-size:11px; font-weight:700; color:#fff; white-space:nowrap;
+}
+.sc-cm { font-size:13px; color:var(--muted); margin-bottom:12px; }
+.sc-cm strong { color:var(--text); }
+.sc-stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.sc-stat { background:rgba(255,255,255,.05); border-radius:8px; padding:8px 10px; text-align:center; }
+.sc-stat-val { font-size:18px; font-weight:700; color:var(--gold); }
+.sc-stat-lbl { font-size:10px; color:var(--muted); }
+.sc-footer { margin-top:14px; padding-top:12px; border-top:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center; }
+.sc-region { font-size:11px; color:var(--muted); }
+.sc-elect { font-size:11px; color:var(--gold); font-weight:600; }
+
+/* ── Timeline ─────────────────────────────────────────────── */
+.timeline { display:flex; flex-direction:column; gap:12px; }
+.tl-item {
+  display:flex; align-items:center; gap:20px;
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:12px; padding:16px 20px;
+}
+.tl-rank {
+  width:36px;height:36px;border-radius:50%;background:var(--glass2);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;color:var(--gold);flex-shrink:0;
+}
+.tl-state { font-size:16px; font-weight:700; min-width:160px; }
+.tl-party { font-size:13px; color:var(--muted); }
+.tl-date { font-size:13px; color:var(--text); margin-left:auto; }
+.tl-days {
+  font-size:22px; font-weight:900; min-width:80px; text-align:right;
+  background: linear-gradient(135deg,var(--gold),var(--saffron));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.tl-days small { font-size:11px; display:block; }
+.tl-bar { flex:1; height:6px; background:rgba(255,255,255,.1); border-radius:3px; overflow:hidden; }
+.tl-fill { height:100%; border-radius:3px; transition:width .6s; }
+
+/* ── Party Dominance ──────────────────────────────────────── */
+.dominance { display:flex; flex-direction:column; gap:12px; }
+.dom-row {
+  display:flex; align-items:center; gap:16px;
+  background:var(--glass); border:1px solid var(--border); border-radius:12px; padding:14px 20px;
+}
+.dom-logo { width:36px;height:36px;object-fit:contain;border-radius:6px;background:#fff;padding:3px; }
+.dom-logo-fb { width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px; }
+.dom-name { min-width:200px; }
+.dom-name strong { font-size:15px; }
+.dom-name span { font-size:12px; color:var(--muted); display:block; }
+.dom-bar { flex:1; height:8px; background:rgba(255,255,255,.1); border-radius:4px; overflow:hidden; }
+.dom-fill { height:100%; border-radius:4px; transition:width .8s; }
+.dom-count { font-size:22px; font-weight:700; min-width:50px; text-align:right; }
+.dom-lbl { font-size:11px; color:var(--muted); }
+
+/* ── Loading ──────────────────────────────────────────────── */
+.loading-spinner {
+  text-align:center; padding:60px; color:var(--muted); font-size:18px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+
+/* ── Prediction Cards ─────────────────────────────────────── */
+.pred-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:20px; }
+.pred-card {
+  background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:24px;
+  border-left:4px solid;
+}
+.pred-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+.pred-party { font-size:18px; font-weight:700; }
+.pred-state { font-size:13px; color:var(--muted); }
+.pred-year { font-size:12px; color:var(--gold); font-weight:700;
+  background:rgba(255,215,0,.1); padding:3px 10px; border-radius:20px; }
+.pred-seats { font-size:40px; font-weight:900; margin:8px 0; }
+.pred-conf-bar { height:6px; background:rgba(255,255,255,.1); border-radius:3px; margin:8px 0; overflow:hidden; }
+.pred-conf-fill { height:100%; border-radius:3px; }
+.pred-conf-lbl { font-size:12px; color:var(--muted); }
+.pred-factors { font-size:13px; color:var(--muted); line-height:1.5; margin-top:12px;
+  padding-top:12px; border-top:1px solid var(--border); }
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--muted); }
+.tri-line { height:3px; margin:0 auto 20px; max-width:200px; border-radius:2px;
+  background:linear-gradient(to right,var(--saffron),var(--white),var(--green)); }
+.fsub { font-size:12px; margin-top:6px; }
+
+/* ── Result Bar ───────────────────────────────────────────── */
+.result-bar { display:flex; height:48px; border-radius:12px; overflow:hidden; margin-bottom:20px; }
+.rb-seg { display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#fff; transition:width .8s; min-width:40px; }
+.result-table { overflow-x:auto; }
+table.rt { width:100%; border-collapse:collapse; }
+table.rt th { padding:10px 16px; background:var(--glass); font-size:13px;
+  color:var(--muted); font-weight:600; text-align:left; border-bottom:1px solid var(--border); }
+table.rt td { padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.05); font-size:14px; }
+table.rt tr:hover td { background:var(--glass); }
+.party-dot { width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:8px; }
+
+/* ── Candidates Grid ──────────────────────────────────────── */
+.candidates-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+.cand-card {
+  background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px; text-align:center; transition:.2s;
+}
+.cand-card:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+.cand-img { width:90px;height:110px;object-fit:cover;border-radius:10px;margin:0 auto 12px;
+  border:3px solid; display:block; }
+.cand-name { font-family:'Cinzel',serif; font-size:15px; margin-bottom:4px; }
+.cand-pos { font-size:12px; color:var(--muted); margin-bottom:8px; }
+.cand-party-chip { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;
+  color:#fff; display:inline-block; }
+
+/* ── Welfare Grid ─────────────────────────────────────────── */
+.welfare-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.wf-card {
+  background:var(--glass); border:1px solid var(--border); border-radius:var(--radius); padding:20px;
+  border-left:4px solid var(--green);
+}
+.wf-name { font-size:15px; font-weight:700; margin-bottom:8px; }
+.wf-stats { display:flex; justify-content:space-between; align-items:center; }
+.wf-ben { font-size:13px; color:var(--muted); }
+.wf-amt { font-size:15px; font-weight:700; color:var(--gold); }
+.wf-year { font-size:11px; color:var(--muted); margin-top:6px; }
+
+/* ── Const Grid ───────────────────────────────────────────── */
+.const-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; }
+.const-card {
+  background:var(--glass); border:1px solid var(--border); border-radius:12px; padding:16px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.const-name { font-size:14px; font-weight:700; }
+.const-inc { font-size:12px; color:var(--muted); margin-top:2px; }
+.const-status { font-size:11px; padding:3px 10px; border-radius:20px; font-weight:700; color:#fff; }
+.const-margin { font-size:13px; color:var(--gold); font-weight:600; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media(max-width:768px){
+  .navbar { padding:0 16px; }
+  .nav-title { display:none; }
+  .alliance-grid { grid-template-columns:1fr; }
+  .vs { display:none; }
+  .pm-card { flex-direction:column; text-align:center; }
+  .pm-grid { grid-template-columns:repeat(2,1fr); }
+  .tl-item { flex-wrap:wrap; }
+}
