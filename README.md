@@ -2,7 +2,7 @@
 
 An interactive data-driven election analytics dashboard for visualizing Indian election trends, party performance, constituency insights, and predictive analytics.
 
-## Features
+## Features 
 
 - Interactive India election dashboard
 - 28 states political overview
