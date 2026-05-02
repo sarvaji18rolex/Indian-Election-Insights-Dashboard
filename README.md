@@ -72,6 +72,11 @@ Visualization:
 
 ---
 
+output:
+
+<img width="1365" height="730" alt="Screenshot 2026-04-26 193112" src="https://github.com/user-attachments/assets/0e659fcb-d40c-493f-a357-f443bc3d8a93" />
+
+
 ## Installation
 
 Clone project:
