@@ -65,6 +65,7 @@ Backend:
 Database:
 - SQLite
 - Flask-SQLAlchemy
+- MONGODB
 
 Visualization:
 - Charts
@@ -78,6 +79,7 @@ output:
 <img width="1361" height="721" alt="Screenshot 2026-04-26 193124" src="https://github.com/user-attachments/assets/f1f90244-b452-436a-8a7d-8635c2f08269" />
 <img width="1365" height="726" alt="Screenshot 2026-04-26 193138" src="https://github.com/user-attachments/assets/5e70a176-452c-4f4a-bef4-5f0821059e29" />
 <img width="1364" height="721" alt="Screenshot 2026-04-26 193151" src="https://github.com/user-attachments/assets/5b011619-89b8-4af7-b210-3fa9a019c2dc" />
+
 
 
 
