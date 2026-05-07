@@ -65,7 +65,6 @@ Backend:
 Database:
 - SQLite
 - Flask-SQLAlchemy
-- MONGODB
 
 Visualization:
 - Charts
